@@ -12,7 +12,7 @@ public class MainFunction extends Thread4Net {
 	protected MainFunction(int u, boolean isCircle) {
 		super(u, isCircle);
 	}
-
+	//发送网络数据主要逻辑。
 	@Override
 	public int doWork(int index) {
 		Nets net = new Nets();
@@ -41,7 +41,7 @@ public class MainFunction extends Thread4Net {
 		}
 		return index;
 	}
-
+	//登录接口
 	private byte[] login(String id, String pass) {
 		StringBuilder data = new StringBuilder(900);
 		String temp = "savestate=3650&username=" + id + "&password=" + pass
