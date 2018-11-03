@@ -88,6 +88,7 @@ public class Login extends Weibo {
 					super.setUid( MyUtil.midWord("uid\":\"", "\",\"", ret));
 					MyUtil.outPutData("cookie.txt", super.getCookie() + "|" + super.getUid() + "|" + super.getId() + "|" + super.getPass());
 					MyUtil.print("登录成功！" + (index + 1), null);
+					return 1;
 				}
 				if ((index + 1) % 50 == 0) {
 					MyUtil.changIp();
