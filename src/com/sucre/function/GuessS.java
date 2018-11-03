@@ -1,8 +1,10 @@
 package com.sucre.function;
 
+import com.sucre.mainUtil.Info;
 import com.sucre.mainUtil.MyUtil;
 import com.sucre.myNet.Nets;
 import com.sucre.myThread.Thread4Net;
+import com.sucre.properties.accounts;
 
 public class GuessS extends Thread4Net {
 
@@ -33,7 +35,11 @@ public class GuessS extends Thread4Net {
 					
 					if((index +1) % 50 ==0){
 						MyUtil.print("准备更换IP!" +"<>"+ (index +1), null);
-						
+						Info info = accounts.getInstance();
+						MyUtil.cutAdsl(info.getADSL());
+						MyUtil.sleeps(2000);
+						MyUtil.connAdsl(info.getADSL(), info.getADSLname(), info.getADSLpass());
+						MyUtil.sleeps(2000);
 					}
 					//不成功，继续试
 				}else{

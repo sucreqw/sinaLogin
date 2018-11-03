@@ -20,6 +20,7 @@ import java.util.zip.GZIPOutputStream;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import com.sucre.listUtil.MutiList;
+import com.sucre.properties.accounts;
 
 
 
@@ -473,7 +474,13 @@ public class MyUtil {
 		}
 		
 	}
-    
+    public static void changIp(){
+		Info info = accounts.getInstance();
+		MyUtil.cutAdsl(info.getADSL());
+		MyUtil.sleeps(2000);
+		MyUtil.connAdsl(info.getADSL(), info.getADSLname(), info.getADSLpass());
+		MyUtil.sleeps(2000);
+    }
     /**
      * 如果字符串为null返回空字符串。
      * @param data
