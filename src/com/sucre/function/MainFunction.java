@@ -18,6 +18,7 @@ public class MainFunction extends Thread4Net {
 		String[] temp = MyUtil.listId.get(index).split("[^@.\\w]");
 		String id = temp[0];
 		String pass = temp[1];
+		MyUtil.print("正在登录！" +id +"<>"+ pass, null);
 		Login weibo = new Login(id, pass);
 		int ret = weibo.logins(index);
 
