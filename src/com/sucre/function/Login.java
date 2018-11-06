@@ -88,7 +88,7 @@ public class Login extends Weibo {
 					super.setUid( MyUtil.midWord("uid\":\"", "\",\"", ret));
 					MyUtil.outPutData("cookie.txt", super.getCookie() + "|" + super.getUid() + "|" + super.getId() + "|" + super.getPass());
 					MyUtil.print("登录成功！" + (index + 1), null);
-					return 1;
+					//return 1;
 				}else {
 					MyUtil.print("登录失败！" + (index + 1), null);
 					MyUtil.print(ret, null);
@@ -106,7 +106,7 @@ public class Login extends Weibo {
 	// 登录接口
 	private byte[] login(String id, String pass) {
 		StringBuilder data = new StringBuilder(900);
-		String temp = "savestate=3650&username=13030950010&password=wqwqwq&pagerefer=https://sina.cn/index/feed?from=touch&Ver=20&entry=wapsso&loginfrom=1";
+		String temp = "savestate=3650&username="+ id +"&password="+ pass +"&pagerefer=https://sina.cn/index/feed?from=touch&Ver=20&entry=wapsso&loginfrom=1";
 		
 		data=data.append("POST /sso/login HTTP/1.1\r\n");
 		data=data.append("Host: passport.sina.cn\r\n");

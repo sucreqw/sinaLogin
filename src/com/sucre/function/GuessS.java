@@ -29,18 +29,14 @@ public class GuessS extends Thread4Net {
 			while (true) {
 				ret = net.goPost("api.weibo.cn", 443, checkIn(cookie, gets(sIndex), uid));
 				//穷举成功
-				if (ret.indexOf("签到") > 0) {
+				if (ret.indexOf("签到") > 0||ret.indexOf("帐号异常")>0) {
 					MyUtil.print("成功猜到S：" + gets(sIndex) +"<>"+ (index +1), null);
 					MyUtil.outPutData("cookies.txt", cookie +"|" + uid + "|" + id +"|" + pass +"|" + gets(sIndex));
 					
 					if((index +1) % 50 ==0){
-						MyUtil.print("准备更换IP!" +"<>"+ (index +1), null);
-						Info info = accounts.getInstance();
-						MyUtil.cutAdsl(info.getADSL());
-						MyUtil.sleeps(2000);
-						MyUtil.connAdsl(info.getADSL(), info.getADSLname(), info.getADSLpass());
-						MyUtil.sleeps(2000);
+						MyUtil.changIp();
 					}
+					return 1;
 					//不成功，继续试
 				}else{
 					sIndex++;
@@ -62,6 +58,7 @@ public class GuessS extends Thread4Net {
 	}
 
 	private byte[] checkIn(String cookie, String s, String uid) {
+		cookie=MyUtil.midWord("SUB=", ";", cookie);
 		StringBuilder data = new StringBuilder(900);
 		data.append(
 				"GET https://api.weibo.cn/2/page/button?request_url=http%3A%2F%2Fi.huati.weibo.com%2Fmobile%2Fsuper%2Factive_checkin%3Fpageid%3D10080817c0fee819b9c79696a382f9634dbd87&networktype=wifi&extparam=tabbar_follow%234296204685089364&accuracy_level=0&uicode=10000011&moduleID=700&wb_version=3654&c=android&i=f842b7a&s="
