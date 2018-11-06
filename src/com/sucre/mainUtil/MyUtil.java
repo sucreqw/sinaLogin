@@ -261,7 +261,7 @@ public class MyUtil {
 				// 创建文件�?
 				OutputStream out = new FileOutputStream(file, true);) {
 			// 写入文件!
-			data += "\r\n";
+			//data += "\r\n";
 			out.write(data.getBytes());
 			out.close();
 		} catch (Exception e) {

@@ -48,7 +48,7 @@ public class Nets {
 			out.flush();
 			// 接收数据,为了解决乱码的情�?,要用inputstreamreader,用bufferedreader 包装后会更高效些.
 			BufferedReader in = new BufferedReader(new InputStreamReader(sslsocket.getInputStream(), "UTF-8"));
-			String str = null;
+			//String str = null;
 			char[] rev = new char[1024];
 			int len = -1;
 			while ((len = in.read(rev)) != -1) {
